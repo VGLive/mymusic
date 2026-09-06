@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="VGLive MyMusic - Modern web music player"
+    >
+
+    <meta name="theme-color" content="#0f0f0f">
+
+    <title>VGLive MyMusic</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">VG</div>
+
+            <div class="brand-name">
+                MyMusic
+            </div>
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button
+                class="nav-item active"
+                data-section="home"
+            >
+                <span class="nav-icon">⌂</span>
+                <span>Home</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="search"
+            >
+                <span class="nav-icon">⌕</span>
+                <span>Search</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="library"
+            >
+                <span class="nav-icon">▣</span>
+                <span>Your Library</span>
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-title">
+            Your Music
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <button
+                class="nav-item"
+                data-section="liked"
+            >
+                <span class="nav-icon">♥</span>
+                <span>Liked Songs</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="recent"
+            >
+                <span class="nav-icon">◷</span>
+                <span>Recently Played</span>
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="playlists"
+            >
+                <span class="nav-icon">☷</span>
+                <span>Playlists</span>
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                class="theme-button"
+                id="themeButton"
+            >
+                <span>☼</span>
+                <span>Theme</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                id="mobileMenu"
+                aria-label="Menu"
+            >
+                ☰
+            </button>
+
+
+            <div class="search-box">
+
+                <span class="search-icon">
+                    ⌕
+                </span>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="What do you want to listen to?"
+                    autocomplete="off"
+                >
+
+                <button
+                    id="clearSearch"
+                    class="clear-search hidden"
+                    aria-label="Clear search"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                    class="icon-button"
+                    id="notificationButton"
+                    aria-label="Notifications"
+                >
+                    ♧
+                </button>
+
+                <button
+                    class="profile-button"
+                    id="profileButton"
+                >
+                    VG
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENT
+        ========================== -->
+
+        <section
+            class="content"
+            id="content"
+        >
+
+            <!-- HOME -->
+
+            <div
+                class="page active"
+                id="homePage"
+            >
+
+                <section class="hero">
+
+                    <div class="hero-content">
+
+                        <span class="hero-label">
+                            VGLive MyMusic
+                        </span>
+
+                        <h1>
+                            Music for every
+                            <span>moment.</span>
+                        </h1>
+
+                        <p>
+                            Discover songs, albums and artists
+                            and enjoy your favorite music.
+                        </p>
+
+                        <button
+                            class="primary-button"
+                            id="heroPlayButton"
+                        >
+                            ▶ Play Music
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <section class="section">
+
+                    <div class="section-header">
+
+                        <h2>
+                            Popular Songs
+                        </h2>
+
+                        <button
+                            class="see-all"
+                            data-action="popular"
+                        >
+                            See all
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="song-grid"
+                        id="popularSongs"
+                    ></div>
+
+                </section>
+
+
+                <section class="section">
+
+                    <div class="section-header">
+
+                        <h2>
+                            Popular Albums
+                        </h2>
+
+                        <button
+                            class="see-all"
+                            data-action="albums"
+                        >
+                            See all
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="album-grid"
+                        id="popularAlbums"
+                    ></div>
+
+                </section>
+
+
+                <section class="section">
+
+                    <div class="section-header">
+
+                        <h2>
+                            Popular Artists
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="artist-grid"
+                        id="popularArtists"
+                    ></div>
+
+                </section>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div
+                class="page"
+                id="searchPage"
+            >
+
+                <div class="page-heading">
+
+                    <h1>
+                        Search
+                    </h1>
+
+                    <p id="searchStatus">
+                        Search for songs, albums or artists.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="search-results"
+                    id="searchResults"
+                >
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            ⌕
+                        </div>
+
+                        <h2>
+                            Find your music
+                        </h2>
+
+                        <p>
+                            Search above to discover songs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- LIBRARY -->
+
+            <div
+                class="page"
+                id="libraryPage"
+            >
+
+                <div class="page-heading">
+
+                    <h1>
+                        Your Library
+                    </h1>
+
+                    <p>
+                        Your music collection.
+                    </p>
+
+                </div>
+
+
+                <div class="library-tabs">
+
+                    <button
+                        class="library-tab active"
+                        data-library="liked"
+                    >
+                        Liked Songs
+                    </button>
+
+                    <button
+                        class="library-tab"
+                        data-library="recent"
+                    >
+                        Recently Played
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="libraryContent"
+                    class="library-content"
+                ></div>
+
+            </div>
+
+
+            <!-- LIKED -->
+
+            <div
+                class="page"
+                id="likedPage"
+            >
+
+                <div class="page-heading">
+
+                    <h1>
+                        Liked Songs
+                    </h1>
+
+                    <p>
+                        Songs you have saved.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="likedSongs"
+                    class="song-list"
+                ></div>
+
+            </div>
+
+
+            <!-- RECENT -->
+
+            <div
+                class="page"
+                id="recentPage"
+            >
+
+                <div class="page-heading">
+
+                    <h1>
+                        Recently Played
+                    </h1>
+
+                    <p>
+                        Your listening history.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="recentSongs"
+                    class="song-list"
+                ></div>
+
+            </div>
+
+
+            <!-- PLAYLISTS -->
+
+            <div
+                class="page"
+                id="playlistsPage"
+            >
+
+                <div class="page-heading">
+
+                    <h1>
+                        Playlists
+                    </h1>
+
+                    <p>
+                        Your personal playlists.
+                    </p>
+
+                </div>
+
+
+                <div class="playlist-empty">
+
+                    <div class="empty-icon">
+                        ♫
+                    </div>
+
+                    <h2>
+                        No playlists yet
+                    </h2>
+
+                    <p>
+                        Playlist functionality will be
+                        added in the next phase.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         PLAYER
+    ========================== -->
+
+    <footer class="player">
+
+        <div class="now-playing">
+
+            <img
+                id="playerArtwork"
+                src="https://picsum.photos/100/100?random=10"
+                alt="Album artwork"
+            >
+
+            <div class="player-song-info">
+
+                <div
+                    id="playerTitle"
+                    class="player-title"
+                >
+                    Nothing Playing
+                </div>
+
+                <div
+                    id="playerArtist"
+                    class="player-artist"
+                >
+                    Select a song
+                </div>
+
+            </div>
+
+
+            <button
+                class="like-button"
+                id="playerLike"
+                aria-label="Like song"
+            >
+                ♡
+            </button>
+
+        </div>
+
+
+        <div class="player-center">
+
+            <div class="player-controls">
+
+                <button
+                    class="control-button"
+                    id="shuffleButton"
+                    title="Shuffle"
+                >
+                    🔀
+                </button>
+
+
+                <button
+                    class="control-button"
+                    id="previousButton"
+                    title="Previous"
+                >
+                    ⏮
+                </button>
+
+
+                <button
+                    class="play-button"
+                    id="playButton"
+                    title="Play"
+                >
+                    ▶
+                </button>
+
+
+                <button
+                    class="control-button"
+                    id="nextButton"
+                    title="Next"
+                >
+                    ⏭
+                </button>
+
+
+                <button
+                    class="control-button"
+                    id="repeatButton"
+                    title="Repeat"
+                >
+                    🔁
+                </button>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <span
+                    id="currentTime"
+                    class="time"
+                >
+                    0:00
+                </span>
+
+
+                <input
+                    type="range"
+                    id="progressBar"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
+
+
+                <span
+                    id="duration"
+                    class="time"
+                >
+                    0:00
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="player-right">
+
+            <button
+                class="control-button"
+                title="Queue"
+                id="queueButton"
+            >
+                ☷
+            </button>
+
+
+            <span class="volume-icon">
+                🔊
+            </span>
+
+
+            <input
+                type="range"
+                id="volumeBar"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.8"
+            >
+
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- AUDIO ENGINE -->
+
+<audio
+    id="audioPlayer"
+    preload="metadata"
+></audio>
+
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast"
+>
+    <span id="toastMessage">
+        Done
+    </span>
+</div>
+
+
+<script src="js/api.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/player.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
